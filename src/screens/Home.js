@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
 import TarefaItem from '../components/TarefaItem';
 
 export default function Home(){
@@ -10,10 +10,91 @@ export default function Home(){
                 </Text>
                 <View style={styles.icone}></View>
             </View>
-            <View style={styles.body}>
-                <TarefaItem/>
+            <ScrollView style={styles.body}>
+                <TarefaItem
+                    nome="Tarefa 1"
+                    status="a cumprir"
+                    data="20/04/2021"
+                    categoria="Reunião"
+                />
+                 <TarefaItem
+                    nome="Tarefa 2"
+                    status="concluido"
+                    data="20/04/2024"
+                    categoria="Estudo"
+                />
+                <TarefaItem
+                    nome="Tarefa 1"
+                    status="a cumprir"
+                    data="20/04/2021"
+                    categoria="Reunião"
+                />
+                 <TarefaItem
+                    nome="Tarefa 2"
+                    status="concluido"
+                    data="20/04/2024"
+                    categoria="Estudo"
+                />
+                <TarefaItem
+                    nome="Tarefa 1"
+                    status="a cumprir"
+                    data="20/04/2021"
+                    categoria="Reunião"
+                />
+                 <TarefaItem
+                    nome="Tarefa 2"
+                    status="concluido"
+                    data="20/04/2024"
+                    categoria="Estudo"
+                />
+                <TarefaItem
+                    nome="Tarefa 1"
+                    status="a cumprir"
+                    data="20/04/2021"
+                    categoria="Reunião"
+                />
+                 <TarefaItem
+                    nome="Tarefa 2"
+                    status="concluido"
+                    data="20/04/2024"
+                    categoria="Estudo"
+                />
+                <TarefaItem
+                    nome="Tarefa 1"
+                    status="a cumprir"
+                    data="20/04/2021"
+                    categoria="Reunião"
+                />
+                 <TarefaItem
+                    nome="Tarefa 2"
+                    status="concluido"
+                    data="20/04/2024"
+                    categoria="Estudo"
+                />
+                <TarefaItem
+                    nome="Tarefa 1"
+                    status="a cumprir"
+                    data="20/04/2021"
+                    categoria="Reunião"
+                />
+                 <TarefaItem
+                    nome="Tarefa 2"
+                    status="concluido"
+                    data="20/04/2024"
+                    categoria="Estudo"
+                />
 
-            </View>
+            </ScrollView>
+
+            <TouchableOpacity 
+                style= {styles.botaoAdicionar}
+                onPress={() => {
+                    alert("weoo")
+
+                }}
+            >
+                <Text style= {styles.texttoBotaoAdicionar}> + </Text>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -43,7 +124,25 @@ const styles = StyleSheet.create({
         height: 30,
         borderRadius: 20,
         position: 'absolute',
-        right: 15
+        right: 15    
+    },
+    body: {
+        flex: 1
+    },
+    botaoAdicionar: {
+        backgroundColor: 'green',
+        width: 30,
+        height: 30,
+        borderRadius: 20,
+        position: 'absolute',
+        right: 15, 
+        bottom: 15
+    },
+    texttoBotaoAdicionar: {
+        fontSize: 20,
+        color: 'white',
+        textAlign: 'center',
+        bottom: 2
     }
 
 });
