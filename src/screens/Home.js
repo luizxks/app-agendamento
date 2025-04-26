@@ -1,7 +1,11 @@
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
 import TarefaItem from '../components/TarefaItem';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Home(){
+export default function Home() {
+
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
             <View style={styles.cabecalho}>
@@ -23,73 +27,13 @@ export default function Home(){
                     data="20/04/2024"
                     categoria="Estudo"
                 />
-                <TarefaItem
-                    nome="Tarefa 1"
-                    status="a cumprir"
-                    data="20/04/2021"
-                    categoria="Reunião"
-                />
-                 <TarefaItem
-                    nome="Tarefa 2"
-                    status="concluido"
-                    data="20/04/2024"
-                    categoria="Estudo"
-                />
-                <TarefaItem
-                    nome="Tarefa 1"
-                    status="a cumprir"
-                    data="20/04/2021"
-                    categoria="Reunião"
-                />
-                 <TarefaItem
-                    nome="Tarefa 2"
-                    status="concluido"
-                    data="20/04/2024"
-                    categoria="Estudo"
-                />
-                <TarefaItem
-                    nome="Tarefa 1"
-                    status="a cumprir"
-                    data="20/04/2021"
-                    categoria="Reunião"
-                />
-                 <TarefaItem
-                    nome="Tarefa 2"
-                    status="concluido"
-                    data="20/04/2024"
-                    categoria="Estudo"
-                />
-                <TarefaItem
-                    nome="Tarefa 1"
-                    status="a cumprir"
-                    data="20/04/2021"
-                    categoria="Reunião"
-                />
-                 <TarefaItem
-                    nome="Tarefa 2"
-                    status="concluido"
-                    data="20/04/2024"
-                    categoria="Estudo"
-                />
-                <TarefaItem
-                    nome="Tarefa 1"
-                    status="a cumprir"
-                    data="20/04/2021"
-                    categoria="Reunião"
-                />
-                 <TarefaItem
-                    nome="Tarefa 2"
-                    status="concluido"
-                    data="20/04/2024"
-                    categoria="Estudo"
-                />
 
             </ScrollView>
 
             <TouchableOpacity 
                 style= {styles.botaoAdicionar}
                 onPress={() => {
-                    alert("weoo")
+                    navigation.navigate("NovaTarefa")
 
                 }}
             >
