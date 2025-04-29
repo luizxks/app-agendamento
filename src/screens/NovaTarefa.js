@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, TextInput } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 
 export default function NovaTarefa(){
     return (
@@ -10,9 +11,19 @@ export default function NovaTarefa(){
                 <Text style={styles.texto}>nome da tarefa: </Text>
                 <TextInput style={styles.textInput}/>
                 <Text style={styles.texto}>categoria da tarefa: </Text>
-                <TextInput style={styles.textInput}/>
-                <Text style={styles.texto}>Descrição da tarefa: </Text>
-                <TextInput style={styles.textInput}/>
+                
+                
+                <Picker style={styles.textInput}>
+                    <Picker.Item label="Estudo" value="estudo"/>
+                    <Picker.Item label="Trabalho" value="trabalho"/>
+                    <Picker.Item label="Reunião" value="reuniao"/>
+                    <Picker.Item label="Prova" value="prova"/>
+                </Picker>
+
+                <Text style={styles.texto}>Descriçãõ da Tarefa:</Text>
+                <TextInput style={styles.textInput}
+                placeholder="value"/>
+
             </View>
         </View>
     )
