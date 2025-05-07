@@ -1,7 +1,12 @@
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { Picker } from "@react-native-picker/picker";
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function NovaTarefa(){
+
+    con
+
     return (
         <View>
              <View style={styles.cabecalho}>
@@ -22,7 +27,25 @@ export default function NovaTarefa(){
 
                 <Text style={styles.texto}>Descriçãõ da Tarefa:</Text>
                 <TextInput style={styles.textInput}
-                placeholder="value"/>
+                placeholder="value"
+                multiline={true}
+                numberOfLines={3}/>
+
+                <TextInput
+                    style={styles.textDate}
+                    placeholder='dd/mm/yyyy'
+                />
+
+                <View style={styles.containerBotao}>
+                    <TouchableOpacity style={styles.botao} onPress={() => }>
+                        <Text style={styles.botaoTexto}>Cancel</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity>
+                        <Text style={styles.botaoTexto}>Ok</Text>
+                    </TouchableOpacity>
+
+                </View>
 
             </View>
         </View>
@@ -58,5 +81,25 @@ const styles = StyleSheet.create({
         borderColor: '#ccc',
         padding: 10,
         backgroundColor: 'white'
+    },
+    textDate: {
+        height: 60,
+        borderWidth: 3,
+        borderRadius: 5,
+        borderColor: 'indigo',
+        margin: 40,
+        marginVertical: 30,
+        padding: 15,
+        backgroundColor: 'white' 
+    },
+    containerBotao: {
+        flexDirection: 'row',
+        justifyContent: 'end'
+    },
+    botao: {
+        padding: 15
+    },
+    botaoTexto: {
+        color: 'indigo'
     }
 })
