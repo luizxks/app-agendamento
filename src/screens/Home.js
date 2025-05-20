@@ -1,43 +1,52 @@
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import TarefaItem from '../components/TarefaItem';
+import { getData } from '../storage/async-storage';
+import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Home() {
 
     const navigation = useNavigation();
 
+
+
+    const [ tasks, setTasks ] = useState(null)
+
+    // Executa ao carregar a página
+    useEffect(async () => {
+        const data = await getData();
+        setTasks(data);
+    }, []);
+
     return (
         <View style={styles.container}>
             <View style={styles.cabecalho}>
-                <Text style={styles.titulo}>
-                    ABRIL / 2025
-                </Text>
+                <Text style={styles.titulo}>ABRIL / 2025</Text>
                 <View style={styles.icone}></View>
             </View>
             <ScrollView style={styles.body}>
-                <TarefaItem
-                    nome="Tarefa 1"
-                    status="a cumprir"
-                    data="20/04/2021"
-                    categoria="Reunião"
-                />
-                 <TarefaItem
-                    nome="Tarefa 2"
-                    status="concluido"
-                    data="20/04/2024"
-                    categoria="Estudo"
-                />
-
+                {
+                    tasks && tasks.map((item) => {
+                        return (
+                            <TarefaItem 
+                                nome={item.nome}
+                                status={item.status}
+                                data={item.data}
+                                categoria={item.categoria}
+                            />
+                        )
+                    })
+                }
             </ScrollView>
 
             <TouchableOpacity 
-                style= {styles.botaoAdicionar}
+                style={styles.botaoAdicionar}
                 onPress={() => {
                     navigation.navigate("NovaTarefa")
 
                 }}
             >
-                <Text style= {styles.texttoBotaoAdicionar}> + </Text>
+                <Text style={styles.botaoMais}>+</Text>
             </TouchableOpacity>
         </View>
     );
@@ -51,42 +60,41 @@ const styles = StyleSheet.create({
         backgroundColor: 'blue',
         width: '100%',
         height: 60,
-        flexDirection: 'row', 
+        flexDirection: 'row',
         justifyContent: "center",
         alignItems: 'center'
     },
     titulo: {
         color: 'white',
-        fontSize: 18, 
+        fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center'
-
     },
     icone: {
         backgroundColor: 'gray',
-        width: 30,
-        height: 30,
+        width: 40,
+        height: 40,
         borderRadius: 20,
         position: 'absolute',
-        right: 15    
+        right: 15
     },
     body: {
         flex: 1
     },
     botaoAdicionar: {
-        backgroundColor: 'green',
-        width: 30,
-        height: 30,
-        borderRadius: 20,
+        width: 50,
+        height: 50,
+        backgroundColor: 'blue',
+        borderRadius: 30,
         position: 'absolute',
-        right: 15, 
-        bottom: 15
+        bottom: 15,
+        right: 15,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    texttoBotaoAdicionar: {
-        fontSize: 20,
+    botaoMais: {
+        fontSize: 40,
         color: 'white',
-        textAlign: 'center',
-        bottom: 2
+        fontWeight: 'bold',
     }
-
 });
