@@ -11,12 +11,21 @@ export default function Home() {
 
 
     const [ tasks, setTasks ] = useState(null)
+    const [ isLoaded, setIsLoaded ] = useState(true)
 
-    // Executa ao carregar a página
-    useEffect(async () => {
+    const loadData = async () => {
         const data = await getData();
         setTasks(data);
-    }, []);
+        setIsLoaded(!isLoaded)
+    }
+
+
+    // Executa ao carregar a página
+    useEffect( () => {
+        if(isLoaded){
+            loadData();
+        }
+    }, [isLoaded]);
 
     return (
         <View style={styles.container}>

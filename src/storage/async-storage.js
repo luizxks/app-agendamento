@@ -20,7 +20,7 @@ const setData = async (value) => {
 }
 
 const addData = async (tasks) => {
-    const data = getData()
+    const data =     getData()
     data.push(tasks)
     await setData(data)
 }

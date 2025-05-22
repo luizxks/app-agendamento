@@ -14,17 +14,34 @@ export default function NovaTarefa() {
     const [ data, setData ] = useState('')
 
 
-    const handleSave = () => {
+    const handleSave = async () => {
         const tarefa= {
             nome: nome,
             categoria: Categotia, 
             data: data,
             descricao: descricao
         };
-        addData(tarefa)
-        alert("Nova tarefa cadastrada!")
-        navigation.navigate('Home')
+
+        if (nome == '') {
+            alerta("Campo nome não preenchido")
+        }
+        else if (descricao == '') {
+            alerta("Campo descrição não preenchido")
+        }
+        else if (data == '') {
+            alerta("Campo data não preenchido")
+        }
+        else {
+            await addData(tarefa)
+            alert("Nova tarefa cadastrada!")
+            navigation.navigate('Home')
+        }  
     }
+
+      
+
+    }
+
     return (
         <View>
             <View style={styles.cabecalho}>
@@ -54,6 +71,8 @@ export default function NovaTarefa() {
 
                 <TextInput 
                     style={styles.textDate}
+                    value={data}
+                    onChangeText={texto => setData(texto)}
                     placeholder='dd/mm/yyyy'
                 />
 
