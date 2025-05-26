@@ -3,6 +3,7 @@ import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { addData } from '../storage/async-storage';
+import MaskInput from 'react-native-mask-input';
 
 export default function NovaTarefa() {
 
@@ -19,16 +20,17 @@ export default function NovaTarefa() {
             nome: nome,
             categoria: Categotia, 
             data: data,
-            descricao: descricao
+            descricao: descricao,
+            status: 'A fazer'
         };
 
-        if (nome == '') {
+        if (nome.trim() == '') {
             alerta("Campo nome não preenchido")
         }
-        else if (descricao == '') {
+        else if (descricao.trim() == '') {
             alerta("Campo descrição não preenchido")
         }
-        else if (data == '') {
+        else if (data.trim() == '') {
             alerta("Campo data não preenchido")
         }
         else {
@@ -40,7 +42,7 @@ export default function NovaTarefa() {
 
       
 
-    }
+    
 
     return (
         <View>
@@ -69,11 +71,12 @@ export default function NovaTarefa() {
                     value={descricao} onChangeText={texto => setDescricao(texto)}
                 />
 
-                <TextInput 
+                <MaskInput 
                     style={styles.textDate}
                     value={data}
                     onChangeText={texto => setData(texto)}
                     placeholder='dd/mm/yyyy'
+                    mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
                 />
 
                 <View style={styles.containerBotao}>
